@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Programmeringsintro</title>
+<script>
+	function kommenteredeKodeEksempler() {
+		// To skråstreger starter en kommentar. Kommentarer ignoreres når koden køres
+
+		// Her opretter jeg en variabel og giver den en værdi:
+		let minVariabel = 123
+		// Der sker faktisk to ting i den linje, så den kan splittes i to linjer:
+		let minAndenVariabel // det her opretter en variabel med navnet 'minAndenVariabel', som herefter kan bruges i resten af programmet
+		minAndenVariabel = 321 // det her er 'a = b' operationen, der giver variablen til venstre for '=' værdien til højre
+
+		// Udover 'a = b' er der også flere andre operationer fra matematik:
+		4 + 2 // 'a + b' giver resultatet af at lægge a og b sammen.
+		4 - 2 // 'a - b' giver resultatet af at trække b fra a.
+		4 * 2 // 'a / b' giver resultatet af at gange a og b.
+		4 / 2 // 'a / b' giver resultatet af at dividere a med b.
+		// Alle de her linjerne giver hver en værdi (det kaldes også at "returnere en værdi"),
+		// men vi har ikke skrevet noget kode som tager imod værdien,
+		// så i praksis sker der ikke noget.
+	}
+
+	const log = console.log
+	function hjælp() {
+		log("Her er de funktioner der er til introen:")
+		log("næste() : Går til næste trin")
+		log("gentag() : Gentager sidste trin")
+		log("forrige() : Går til forrige trin")
+		log("nuværendeTrin() : Fortæller dig indekset (et tal) for nuværende trin")
+		log("gåTilTrin(indeks) : Lader dig gå til et bestemt trin ved at skrive det ønskede indeks i stedet for 'indeks'")
+	}
+
+	let currentIntroStep = 0
+	let introSteps = [
+		() => {
+			log("Hej!")
+			log("Prøv at skrive 'næste()' herunder, og tryk så 'enter'")
+		},
+		() => {
+			log("Det er næsten som magi!")
+			log("'næste()' fører dig videre i introen, og 'forrige()' lader dig gå tilbage.")
+			log("Prøv en gang til, og så går vi igang med programmeringen.")
+		},
+		() => {
+			log("Det mest grundlæggende i programmering er nok variabler og operationer")
+			log("Lad os kigge lidt på variabler først.")
+			log("Du kan oprette en variabel og give den en værdi ved at skrive sådan noget som `let minVariabel = 123`")
+			log("Hvis du derefter skriver 'minVariabel', så fortæller konsollen dig værdien i variablen.")
+			log("Prøv at lave et par stykker, før du går videre.")
+		},
+		() => {
+			log("Man kan gemme andet end tal i en variabel, men det gemmer vi til lidt senere.")
+			log("'let minVariabel = 123' kan læses som \"lad 'minVariabel' være 123\", men det består egentlig af to dele:")
+			log("'let minVariabel' opretter en variabel ved navn 'minVariabel', som herefter kan bruges i resten af programmet,")
+			log("og 'minVariabel = 123' er 'a = b' operationen, der giver variablen til venstre værdien fra højre")
+			log("Tag at afprøve at lave variabler på forskellige måder, og tjek deres værdi ved at skrive navnet på variablen i konsollen som før. Prøv også at tjekke en variabel du ikke har oprettet endnu.")
+		},
+	]
+
+	function næste() {
+		if (currentIntroStep == introSteps.length - 1)
+			return "Det var det!"
+		currentIntroStep++
+		introSteps[currentIntroStep]()
+	}
+
+	function gentag() {
+		introSteps[currentIntroStep]()
+	}
+
+	function forrige() {
+		if (currentIntroStep == 0)
+			return "Du kan ikke gå længere tilbage"
+		currentIntroStep--
+		introSteps[currentIntroStep]()
+	}
+
+	function nuværendeTrin() {
+		return currentIntroStep
+	}
+
+	function gåTilTrin(index) {
+		if (!(0 <= index && index < introSteps.length))
+			return "Indekset " + index + " er ikke et gyldigt trin"
+		currentIntroStep = index
+		introSteps[currentIntroStep]()
+	}
+
+	introSteps[0]()
+</script>
+
+<style>
+	body {
+		text-align: center;
+		font-family: Arial, Helvetica, sans-serif;
+		margin: 0 auto;
+		width: 40rem;
+	}
+
+</style>
+
+<body>
+	<h1>Programmeringsintro</h1>
+	<p>Tryk på F12 for at åbne udviklerværktøjerne, og så vælg konsollen. Der kan man køre kode i direkte.</p>
+</body>

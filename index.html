@@ -14,7 +14,7 @@
 		// Udover 'a = b' er der også flere andre operationer fra matematik:
 		4 + 2 // 'a + b' giver resultatet af at lægge a og b sammen.
 		4 - 2 // 'a - b' giver resultatet af at trække b fra a.
-		4 * 2 // 'a / b' giver resultatet af at gange a og b.
+		4 * 2 // 'a * b' giver resultatet af at gange a og b.
 		4 / 2 // 'a / b' giver resultatet af at dividere a med b.
 		// Alle de her linjerne giver hver en værdi (det kaldes også at "returnere en værdi"),
 		// men vi har ikke skrevet noget kode som tager imod værdien,
@@ -56,7 +56,56 @@
 			log("og 'minVariabel = 123' er 'a = b' operationen, der giver variablen til venstre værdien fra højre")
 			log("Tag at afprøve at lave variabler på forskellige måder, og tjek deres værdi ved at skrive navnet på variablen i konsollen som før. Prøv også at tjekke en variabel du ikke har oprettet endnu.")
 		},
+		() => {
+			log("Pointen i variabler er at de kan holde værdier for os, og bruges i stedet for faste værdier som 123.")
+			log("Så når man giver en værdi til en variabel, kan man få værdien fra en anden variabel:")
+			log("'let minAndenVariabel = minVariabel'")
+			log("Efter den linje vil minAndenVariabel og minVariabel have den samme værdi.")
+			log("Hvis man så derefter siger 'minVariabel = 999', så ændrer det ikke på dem begge, men kun 'minVariabel'.")
+			log("Det er fordi 'a = b' tager *den nuværende værdi* fra 'b' og giver til 'a', og intet andet.")
+			log("Afprøv det lidt, til du mener du har forstået det.")
+		},
+		() => {
+			log("Lad os kigge på nogle simple operationer.")
+			log("'a + b' operationen tager værdierne fra a og b, lægger dem sammen og giver/'returnerer' resultatet")
+			log("Prøv at lægge forskellige tal og variabler sammen.")
+		},
+		() => {
+			log("Man kan kombinere så meget man vil på en linje; for eksempel: 'let mitTal = 3 + minVariabel + 10'.")
+			log("Den linje kan udvides til:")
+			log("'let mitTal'")
+			log("'3 + minVariabel'")
+			log("'resultat + 10' ('resultat' er værdien returneret fra operationen ovenover)")
+			log("'mitTal = resultat' ('resultat' er værdien returneret fra operationen ovenover)")
+			log("Det giver sjældent mening at skrive kun 'a + b' på en linje kode, for '+' har ingen anden effekt end at returnere resultatet,")
+			log("så hvis der ikke er nogen variabel eller andet til at tage imod værdien, er der i praksis ikke sket noget.")
+		},
+		() => {
+			log("Ligesom i matematik har operationer regler for hvilken rækkefølge de evalueres.")
+			log("'=' har lavest prioritet, så det sker altid til sidst.")
+			log("Ting med ens prioritet evalueres fra venstre til højre,")
+			log("hvilket er grunden til det i eksemplet i sidste trin først var '3 + minVariabel' i stedet for 'minVariabel + 10'.")
+			log("Udover 'a + b' er der også 'a - b', 'a * b' og 'a / b'.")
+			log("Igen ligesom i matematik har '*' og '/' ens prioritet, som er højere end prioriteten for '+' og '-' (som også er ens).")
+			log("Derudover kan man bruge parenteser til at give noget højere prioritet. For eksempel giver '10 + 5 * 5' et andet resultat end '(10 + 5) * 5'")
+			log("Prøv at lave et par længere udregninger.")
+		},
+		() => {
+			log("Lad os så lidt kigge på den gruppe operationer, der virkelig gør programmering til programmering: funktioner.")
+			log("Du har faktisk allerede brugt en funktion adskillige gange: 'næste()'!")
+			log("En funktion indeholder en samling kode, som bliver kørt, når funktionen bliver evalueret.")
+			log("I modsætning til 'a + b', hvor operanderne står på hver side af operationen,")
+			log("så sættes en funktions operander ind som en liste i parenteserne: 'add(a, b)'.")
+			log("Det gør at man kan lave funktioner, som bruger et hvilket som helst antal operander: 'næste()', 'gåTilTrin(n)', 'add(a, b)', 'console.log(a, b, c)' og så videre.")
+			log("Derudover kan funktioner have 'sideeffekter'; dvs. de kan gøre andet end at returnere en ny værdi.")
+			log("Faktisk returnerer 'næste()' slet ikke nogen værdi, så den er *kun* sideeffekter.")
+			log("Prøv at bruge nogle af de indbyggede funktioner i 'Math': 'Math.random()', 'Math.round(a)', 'Math.pow(a, b)'")
+		}
 	]
+
+	function add(a, b){
+		return a + b
+	}
 
 	function næste() {
 		if (currentIntroStep == introSteps.length - 1)
